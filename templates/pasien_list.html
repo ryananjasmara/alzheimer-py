@@ -1,0 +1,207 @@
+{% include "header.html" %}
+<link rel="stylesheet"
+  href="{{ url_for('static', filename='bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<link rel="stylesheet"
+  href="{{ url_for('static', filename='bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+{% include "navigation.html" %}
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Dokter
+      <small>Semua Data Pasien</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="{{ url_for('pasien') }}"><i class="fa fa-table"></i> Kelola Pasien</a></li>
+      <li class="active">Data Pasien</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <a href="#" data-toggle="modal" data-target="#tambah" class="btn btn-default btn-sm btn-icon icon-left"><i
+                class="fa fa-plus"></i>&nbsp;&nbsp;Tambah Pasien</a>
+          </div>
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Id Pasien</th>
+                  <th>Nama Pasien</th>
+                  <th>Kontak Pasien</th>
+                  <th>Tanggal Lahir Pasien</th>
+                  <th>Jenis Kelamin Pasien</th>
+                  <th>Alamat Pasien</th>
+                  <th style="width: 15%;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in data %}
+                <tr>
+                  <td>{{row.id_pasien}}</td>
+                  <td>{{row.nama_pasien}}</td>
+                  <td>{{row.kontak_pasien}}</td>
+                  <td>{{row.tanggal_lahir_pasien}}</td>
+                  <td>{{row.jenis_kelamin_pasien}}</td>
+                  <td>{{row.alamat_pasien}}</td>
+                  <td style="text-align: center;">
+                    <a href="#" data-toggle="modal" data-target="#edit{{row.id_pasien}}"
+                      class="btn btn-warning btn-sm btn-icon icon-left"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    &nbsp
+                    <a href="#" data-toggle="modal" data-target="#hapus{{row.id_pasien}}"
+                      class="btn btn-danger btn-sm btn-icon icon-left"><i class="fa fa-trash"></i>&nbsp;&nbsp;Hapus</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% for row in data %}
+<div class="modal fade" id="hapus{{row.id_pasien}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Apakah anda yakin ingin menghapus <b>{{row.nama_pasien}}</b> dari tabel pasien?</h4>
+      </div>
+      <div class="modal-footer">
+        <center>
+          <a href="{{ url_for('hapus_pasien', id_pasien=row.id_pasien) }}"><button type="submit" class="btn btn-danger"
+              style="width: 75px;">Ya</button></a>
+          &nbsp;
+          <button data-dismiss="modal" type="submit" class="btn btn-success" style="width: 75px;">Tidak</button>
+        </center>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit{{row.id_pasien}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit data pasien {{row.nama_pasien}}</h4>
+      </div>
+      <form action="{{ url_for('edit_pasien', id_pasien=row.id_pasien) }}" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nama Pasien</label>
+            <input type="text" class="form-control" id="" name="nama" value="{{row.nama_pasien}}">
+          </div>
+          <div class="form-group">
+            <label>Kontak Pasien</label>
+            <input type="text" class="form-control" id="" name="kontak" value="{{row.kontak_pasien}}">
+          </div>
+          <div class="form-group">
+            <label>Tanggal Lahir Pasien</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir" value="{{row.tanggal_lahir_pasien}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Jenis Kelamin Pasien</label>
+            <select class="form-control" name="jenis_kelamin">
+              <option {% if row.jenis_kelamin_pasien == "Laki-laki" %} selected {% endif %}>Laki-laki</option>
+              <option {% if row.jenis_kelamin_pasien == "Perempuan" %} selected {% endif %}>Perempuan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Alamat Pasien</label>
+            <input type="text" class="form-control" id="" name="alamat" value="{{row.alamat_pasien}}">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger pull-left">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="modal fade" id="tambah">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Tambah Pasien</h4>
+      </div>
+      <form action="{{ url_for('tambah_pasien') }}" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nama Pasien</label>
+            <input type="text" class="form-control" id="" name="nama" value="">
+          </div>
+          <div class="form-group">
+            <label>Kontak Pasien</label>
+            <input type="text" class="form-control" id="" name="kontak" value="">
+          </div>
+          <div class="form-group">
+            <label>Tanggal Lahir Pasien</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_lahir">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Jenis Kelamin Pasien</label>
+            <select class="form-control" name="jenis_kelamin">
+              <option>Laki-laki</option>
+              <option>Perempuan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Alamat Pasien</label>
+            <input type="text" class="form-control" id="" name="alamat" value="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger pull-left">Tambah</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}
+<script src="{{ url_for('static', filename='bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script
+  src="{{ url_for('static', filename='bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script
+  src="{{ url_for('static', filename='bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'ordering': false,
+    })
+    $('#example2').DataTable({
+      'paging': true,
+      'lengthChange': false,
+      'searching': false,
+      'ordering': true,
+      'info': true,
+      'autoWidth': false
+    })
+  })
+  $('#datepicker').datepicker({
+    autoclose: true,
+    format: 'dd/mm/yyyy'
+  })
+</script>
