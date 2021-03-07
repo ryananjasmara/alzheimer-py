@@ -1,0 +1,131 @@
+{% include "header.html" %}
+<link rel="stylesheet"
+  href="{{ url_for('static', filename='bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+{% include "navigation.html" %}
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Dokter
+      <small>Semua Data Dokter</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="{{ url_for('dokter') }}"><i class="fa fa-table"></i> Kelola Dokter</a></li>
+      <li class="active">Data Dokter</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="box">
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Id Dokter</th>
+                  <th>Nama Dokter</th>
+                  <th>Email Dokter</th>
+                  <th>Password Dokter</th>
+                  <th style="width: 15%;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in data %}
+                <tr>
+                  <td>{{row.id_dokter}}</td>
+                  <td>{{row.nama_dokter}}</td>
+                  <td>{{row.email_dokter}}</td>
+                  <td>{{row.password_dokter}}</td>
+                  <td style="text-align: center;">
+                    <a href="#" data-toggle="modal" data-target="#edit{{row.id_dokter}}"
+                      class="btn btn-warning btn-sm btn-icon icon-left"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    &nbsp
+                    <a href="#" data-toggle="modal" data-target="#hapus{{row.id_dokter}}"
+                      class="btn btn-danger btn-sm btn-icon icon-left"><i class="fa fa-trash"></i>&nbsp;&nbsp;Hapus</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% for row in data %}
+<div class="modal fade" id="hapus{{row.id_dokter}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Apakah anda yakin ingin menghapus <b>{{row.nama_dokter}}</b> dari tabel dokter?</h4>
+      </div>
+      <div class="modal-footer">
+        <center>
+          <a href="{{ url_for('hapus_dokter', id_dokter=row.id_dokter) }}"><button type="submit" class="btn btn-danger"
+              style="width: 75px;">Ya</button></a>
+          &nbsp;
+          <button data-dismiss="modal" type="submit" class="btn btn-success" style="width: 75px;">Tidak</button>
+        </center>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit{{row.id_dokter}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit data dokter {{row.nama_dokter}}</h4>
+      </div>
+      <form action="{{ url_for('edit_dokter', id_dokter=row.id_dokter) }}" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nama Dokter</label>
+            <input type="text" class="form-control" id="" name="nama" value="{{row.nama_dokter}}">
+          </div>
+          <div class="form-group">
+            <label>Email Dokter</label>
+            <input type="email" class="form-control" id="" name="email"
+              value="{{row.email_dokter}}">
+          </div>
+          <div class="form-group">
+            <label>Password Dokter (biarkan kosong jika tidak ada perubahan)</label>
+            <input type="password" class="form-control" id="" name="password" value="">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger pull-left">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% include "footer.html" %}
+<script src="{{ url_for('static', filename='bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script
+  src="{{ url_for('static', filename='bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'ordering': false,
+    })
+    $('#example2').DataTable({
+      'paging': true,
+      'lengthChange': false,
+      'searching': false,
+      'ordering': true,
+      'info': true,
+      'autoWidth': false
+    })
+  })
+</script>
