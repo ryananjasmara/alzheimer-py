@@ -30,21 +30,28 @@ def login():
     if request.method == 'POST':
         # data
         email = request.form['email']
-        password = computeMD5hash(request.form['password'])
-        # fetch
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        query = "SELECT * FROM tbl_dokter WHERE email_dokter=%s AND password_dokter=%s"
-        param = (email, password)
-        cursor.execute(query, param)
-        columns = cursor.description
-        result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
-        if len(result) > 0:
+        password = request.form['password']
+        # check if login as admin / dokter
+        if email == 'admin@alz.com' and password == 'alz2021':
             session['logined'] = True
+            session['login_as'] = 'admin'
             return redirect('/home')
         else:
-            messages = "username atau password anda tidak sesuai"
-            return flask.render_template('login.html', error=messages)
+            # fetch
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            query = "SELECT * FROM tbl_dokter WHERE email_dokter=%s AND password_dokter=md5(%s)"
+            param = (email, password)
+            cursor.execute(query, param)
+            columns = cursor.description
+            result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
+            if len(result) > 0:
+                session['logined'] = True
+                session['login_as'] = 'dokter'
+                return redirect('/home')
+            else:
+                messages = "username atau password anda tidak sesuai"
+                return flask.render_template('login.html', error=messages)
     else:
         return flask.render_template('login.html')
 
