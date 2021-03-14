@@ -175,22 +175,18 @@ def hapus_pasien(id_pasien):
 def edit_pasien(id_pasien):
     # data
     nama = request.form['nama']
-    email = request.form['email']
-    password = request.form['password']
+    kontak = request.form['kontak']
+    tanggal_lahir = request.form['tanggal_lahir']
+    jenis_kelamin = request.form['jenis_kelamin']
+    alamat = request.form['alamat']
     # fetch
     conn = mysql.connect()
     cursor = conn.cursor()
-    if password != '':
-        query = "UPDATE tbl_dokter SET nama_dokter=%s, email_dokter=%s, password_dokter=md5(%s) WHERE id_dokter=%s"
-        param = (nama, email, password, id_pasien)
-        cursor.execute(query, param)
-        conn.commit()
-    else:
-        query = "UPDATE tbl_dokter SET nama_dokter=%s, email_dokter=%s WHERE id_dokter=%s"
-        param = (nama, email, id_pasien)
-        cursor.execute(query, param)
-        conn.commit()
-    return redirect('/dokter')
+    query = "UPDATE tbl_pasien SET nama_pasien=%s, kontak_pasien=%s, tanggal_lahir_pasien=%s, jenis_kelamin_pasien=%s, alamat_pasien=%s WHERE id_pasien=%s"
+    param = (nama, kontak, tanggal_lahir, jenis_kelamin, alamat, id_pasien)
+    cursor.execute(query, param)
+    conn.commit()
+    return redirect('/pasien')
 
 
 @app.route('/tambah_pasien', methods=['POST'])
