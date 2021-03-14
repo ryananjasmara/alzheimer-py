@@ -35,6 +35,7 @@ def login():
         if email == 'admin@alz.com' and password == 'alz2021':
             session['logined'] = True
             session['login_as'] = 'admin'
+            session['name'] = 'Admin'
             return redirect('/home')
         else:
             # fetch
@@ -48,6 +49,9 @@ def login():
             if len(result) > 0:
                 session['logined'] = True
                 session['login_as'] = 'dokter'
+                session['id'] = result[0]['id_dokter']
+                session['name'] = result[0]['nama_dokter']
+                
                 return redirect('/home')
             else:
                 messages = "username atau password anda tidak sesuai"
@@ -91,7 +95,7 @@ def logout():
 
 @app.route('/home')
 def home():
-    is_login = session['logined']
+    is_login = session.get('logined')
     if is_login == True:
         session['page'] = 'home'
         return flask.render_template('home.html')
@@ -101,7 +105,7 @@ def home():
 
 @app.route('/dokter')
 def dokter():
-    is_login = session['logined']
+    is_login = session.get('logined')
     if is_login == True:
         session['page'] = 'dokter'
         # fetch
@@ -151,7 +155,7 @@ def edit_dokter(id_dokter):
 
 @app.route('/pasien')
 def pasien():
-    is_login = session['logined']
+    is_login = session.get('logined')
     if is_login == True:
         session['page'] = 'pasien'
         # fetch
