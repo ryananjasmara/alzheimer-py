@@ -12,6 +12,7 @@
           <i class="fa fa-user"></i> <span>Kelola Pasien</span>
         </a>
       </li>
+      {% if session['login_as'] == 'admin': %}
       <li {% if session['page'] == "dokter": %} class="active" {% endif %}>
         <a href="{{ url_for('dokter') }}">
           <i class="fa fa-user-md"></i> <span>Kelola Dokter</span>
@@ -22,6 +23,7 @@
           <i class="fa fa-copy"></i> <span>Kelola Gejala</span>
         </a>
       </li>
+      {% endif %}
     </ul>
   </section>
 </aside>
