@@ -11,30 +11,33 @@
     </ol>
   </section>
   <section class="content">
+    {% if session['login_as'] == 'admin': %}
     <div class="row">
       <div class="col-lg-6 col-xs-6">
         <div class="small-box bg-aqua">
           <div class="inner">
-            <h3>40</h3>
+            <h3>{{count_pasien}}</h3>
             <p>Pasien</p>
           </div>
           <div class="icon">
             <i class="fa fa-user"></i>
           </div>
-          <a href="" class="small-box-footer">Info Lengkap <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="{{ url_for('pasien') }}" class="small-box-footer">Info Lengkap <i
+              class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-6 col-xs-6">
         <div class="small-box bg-green">
           <div class="inner">
-            <h3>20</h3>
+            <h3>{{count_dokter}}</h3>
 
             <p>Dokter</p>
           </div>
           <div class="icon">
             <i class="fa fa-user-md"></i>
           </div>
-          <a href="" class="small-box-footer">Info Lengkap <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="{{ url_for('dokter') }}" class="small-box-footer">Info Lengkap <i
+              class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-6 col-xs-6">
@@ -51,6 +54,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
   </section>
 </div>
 {% include "footer.html" %}

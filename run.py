@@ -97,9 +97,28 @@ def logout():
 @app.route('/home')
 def home():
     is_login = session.get('logined')
+    login_as = session.get('login_as')
     if is_login == True:
         session['page'] = 'home'
-        return flask.render_template('home.html')
+        # fetch
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        if login_as == 'admin':
+            # pasien
+            query = "SELECT count(id_pasien) as count FROM tbl_pasien"
+            cursor.execute(query)
+            columns = cursor.description
+            result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
+            count_pasien = result[0]['count']
+            # dokter
+            query = "SELECT count(id_dokter) as count FROM tbl_dokter"
+            cursor.execute(query)
+            columns = cursor.description
+            result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
+            count_dokter = result[0]['count']
+            return flask.render_template('home.html', count_pasien=count_pasien, count_dokter=count_dokter)
+        else:
+            return flask.render_template('home.html')
     else:
         return redirect('/')
 
