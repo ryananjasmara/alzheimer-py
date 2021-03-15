@@ -35,7 +35,7 @@ def login():
         if email == 'admin@alz.com' and password == 'alz2021':
             session['logined'] = True
             session['login_as'] = 'admin'
-            session['name'] = 'Admin'
+            session['nama'] = 'Admin'
             return redirect('/home')
         else:
             # fetch
@@ -50,7 +50,8 @@ def login():
                 session['logined'] = True
                 session['login_as'] = 'dokter'
                 session['id'] = result[0]['id_dokter']
-                session['name'] = result[0]['nama_dokter']
+                session['nama'] = result[0]['nama_dokter']
+                session['email'] = result[0]['email_dokter']
                 
                 return redirect('/home')
             else:

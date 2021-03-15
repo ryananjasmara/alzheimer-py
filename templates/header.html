@@ -41,7 +41,6 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-  <!-- Google Font -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -50,7 +49,6 @@
   <div class="wrapper">
 
     <header class="main-header">
-      <!-- Logo -->
       <a href="index2.html" class="logo">
         <span class="logo-mini"><b>AA</b></span>
         <span class="logo-lg"><b>Alzheimer Admin</b></span>
@@ -60,24 +58,24 @@
           <span class="sr-only">Toggle navigation</span>
         </a>
 
-
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{ url_for('static', filename='dist/img/avatar5.png') }}" class="user-image" alt="User Image">
-                <span class="hidden-xs">{{ session['name'] }}</span>
+                <span class="hidden-xs">{{session.get('nama')}}</span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
                   <img src="{{ url_for('static', filename='dist/img/avatar5.png') }}" class="img-circle"
                     alt="User Image">
-                  <p>{{ session['name'] }}</p>
+                  <p>{{session.get('nama')}}<small>{{session.get('login_as').capitalize()}}</small></p>
                 </li>
                 {% if session['login_as'] == 'dokter': %}
                 <li class="user-footer">
                   <div class="pull-right">
-                    <a href="#" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Ubah Data</a>
+                    <a href="#" data-toggle="modal" data-target="#edit" class="btn btn-warning btn-flat"><i
+                        class="fa fa-pencil"></i>&nbsp;&nbsp;Ubah Data</a>
                   </div>
                 </li>
                 {% endif %}
@@ -90,3 +88,37 @@
         </div>
       </nav>
     </header>
+
+    {% if session['login_as'] == 'dokter': %}
+    <div class="modal fade" id="edit">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit data</h4>
+          </div>
+          <form action="{{ url_for('edit_dokter', id_dokter=session.get('id')) }}" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Nama Dokter</label>
+                <input type="text" class="form-control" id="" name="nama" value="{{session.get('nama')}}">
+              </div>
+              <div class="form-group">
+                <label>Email Dokter</label>
+                <input type="email" class="form-control" id="" name="email" value="{{session.get('email')}}">
+              </div>
+              <div class="form-group">
+                <label>Password Dokter (biarkan kosong jika tidak ada perubahan)</label>
+                <input type="password" class="form-control" id="" name="password" value="">
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger pull-left">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endif %}
