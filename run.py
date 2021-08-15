@@ -3,6 +3,7 @@ import flask
 import hashlib
 from flask import Flask, render_template, request, json, redirect, session, url_for
 from flaskext.mysql import MySQL
+from sklearn import svm
 
 # create the flask app
 app = Flask(__name__)
@@ -231,11 +232,28 @@ def tambah_pasien():
     # fetch
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "INSERT INTO tbl_pasien (nama_pasien, kontak_pasien, tanggal_lahir_pasien, jenis_kelamin_pasien, alamat_pasien) values (%s, %s, %s, %s, %s)"
+    query = "INSERT INTO tbl_pasien (nama_pasien, kontak_pasien, tanggal_lahir_pasien, jenis_kelamin_pasien, alamat_pasien, status_pasien) values (%s, %s, %s, %s, %s, 'Belum Diagnosa')"
     param = (nama, kontak, tanggal_lahir, jenis_kelamin, alamat)
     cursor.execute(query, param)
     conn.commit()
     return redirect('/pasien')
+
+@app.route('/diagnosa/<id_pasien>')
+def diagnosa(id_pasien):
+    is_login = session.get('logined')
+    if is_login == True:
+        session['page'] = 'pasien'
+        # fetch
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        query = "SELECT * FROM tbl_pasien WHERE id_pasien=%s"
+        param = (id_pasien)
+        cursor.execute(query, param)
+        columns = cursor.description
+        result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
+        return flask.render_template('kuesioner.html', data=result)
+    else:
+        return redirect('/')
 
 # run the app
 app.run()
