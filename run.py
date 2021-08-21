@@ -1,6 +1,7 @@
 # import necessary packages
 import flask
 import hashlib
+import math
 from flask import Flask, render_template, request, json, redirect, session, url_for
 from flaskext.mysql import MySQL
 from sklearn import svm
@@ -254,6 +255,134 @@ def diagnosa(id_pasien):
         return flask.render_template('kuesioner.html', data=result)
     else:
         return redirect('/')
+
+@app.route('/tambah_hasil', methods=['POST'])
+def tambah_hasil():
+    # data
+    id_pasien = request.form['id_pasien']
+    # mmse
+    mmse1 = int(request.form['mmse1'])
+    mmse2 = int(request.form['mmse2'])
+    mmse3 = int(request.form['mmse3'])
+    mmse4 = int(request.form['mmse4'])
+    mmse5 = int(request.form['mmse5'])
+    mmse6 = int(request.form['mmse6'])
+    mmse7 = int(request.form['mmse7'])
+    mmse8 = int(request.form['mmse8'])
+    mmse9 = int(request.form['mmse9'])
+    mmse10 = int(request.form['mmse10'])
+    mmse11 = int(request.form['mmse11'])
+    hasil_mmse = mmse1 + mmse2 + mmse3 + mmse4 + mmse5 + mmse6 + mmse7 + mmse8 + mmse9 + mmse10 + mmse11
+    # cdr 1
+    cdr_1_1 = request.form['cdr-1-1']
+    cdr_1_1a = request.form['cdr-1-1a']
+    cdr_1_2 = request.form['cdr-1-2']
+    cdr_1_3 = request.form['cdr-1-3']
+    cdr_1_4 = request.form['cdr-1-4']
+    cdr_1_5 = request.form['cdr-1-5']
+    cdr_1_6 = request.form['cdr-1-6']
+    cdr_1_7 = request.form['cdr-1-7']
+    cdr_1_8 = request.form['cdr-1-8']
+    cdr_1_9a = request.form['cdr-1-9a']
+    cdr_1_9b = request.form['cdr-1-9b']
+    cdr_1_10 = request.form['cdr-1-10']
+    cdr_1_11 = request.form['cdr-1-11']
+    cdr_1_12a = request.form['cdr-1-12a']
+    cdr_1_12b = request.form['cdr-1-12b']
+    cdr_1_12c = request.form['cdr-1-12c']
+    cdr_1_12d = request.form['cdr-1-12d']
+    cdr_1_13 = request.form['cdr-1-13']
+    cdr_1_14 = request.form['cdr-1-14']
+    cdr_1_15 = request.form['cdr-1-15']
+    # cdr 2
+    cdr_2_1 = request.form['cdr-2-1']
+    cdr_2_2 = request.form['cdr-2-2']
+    cdr_2_3 = request.form['cdr-2-3']
+    cdr_2_4 = request.form['cdr-2-4']
+    cdr_2_5 = request.form['cdr-2-5']
+    cdr_2_6 = request.form['cdr-2-6']
+    cdr_2_7 = request.form['cdr-2-7']
+    cdr_2_8 = request.form['cdr-2-8']
+    # cdr 3
+    cdr_3_1 = request.form['cdr-3-1']
+    cdr_3_2 = request.form['cdr-3-2']
+    cdr_3_3 = request.form['cdr-3-3']
+    cdr_3_4 = request.form['cdr-3-4']
+    cdr_3_5 = request.form['cdr-3-5']
+    cdr_3_6 = request.form['cdr-3-6']
+    # cdr 4
+    cdr_4_1 = request.form['cdr-4-1']
+    cdr_4_2 = request.form['cdr-4-2']
+    cdr_4_3 = request.form['cdr-4-3']
+    cdr_4_4a = request.form['cdr-4-4a']
+    cdr_4_4b = request.form['cdr-4-4b']
+    cdr_4_5 = request.form['cdr-4-5']
+    cdr_4_6 = request.form['cdr-4-6']
+    cdr_4_7 = request.form['cdr-4-7']
+    cdr_4_8 = request.form['cdr-4-8']
+    cdr_4_9 = request.form['cdr-4-9']
+    cdr_4_10 = request.form['cdr-4-10']
+    # cdr 5
+    cdr_5_1a = request.form['cdr-5-1a']
+    cdr_5_1b = request.form['cdr-5-1b']
+    cdr_5_2a = request.form['cdr-5-2a']
+    cdr_5_2b = request.form['cdr-5-2b']
+    cdr_5_3 = request.form['cdr-5-3']
+    cdr_5_4 = request.form['cdr-5-4']
+    cdr_5_5 = request.form['cdr-5-5']
+    # cdr 6
+    cdr_6_1 = request.form['cdr-6-1']
+    cdr_6_2 = request.form['cdr-6-2']
+    cdr_6_3 = request.form['cdr-6-3']
+    cdr_6_4 = request.form['cdr-6-4']
+    # cdr 7
+    cdr_7_1 = request.form['cdr-7-1']
+    cdr_7_2a = request.form['cdr-7-2a']
+    cdr_7_2b = request.form['cdr-7-2b']
+    cdr_7_4 = request.form['cdr-7-4']
+    cdr_7_5 = request.form['cdr-7-5']
+    cdr_7_6a = request.form['cdr-7-6a']
+    cdr_7_6b = request.form['cdr-7-6b']
+    cdr_7_6c = request.form['cdr-7-6c']
+    cdr_7_6d = request.form['cdr-7-6d']
+    cdr_7_7 = request.form['cdr-7-7']
+    cdr_7_8 = request.form['cdr-7-8']
+    cdr_7_9 = request.form['cdr-7-9']
+    # cdr 8
+    cdr_8_1 = request.form['cdr-8-1']
+    cdr_8_2 = request.form['cdr-8-2']
+    cdr_8_3 = request.form['cdr-8-3']
+    cdr_8_4 = request.form['cdr-8-4']
+    cdr_8_5 = request.form['cdr-8-5']
+    cdr_8_6 = request.form['cdr-8-6']
+    cdr_8_7 = request.form['cdr-8-7']
+    cdr_8_8 = request.form['cdr-8-8']
+    # cdr 9
+    cdr_9_1 = request.form['cdr-9-1']
+    cdr_9_2 = request.form['cdr-9-2']
+    cdr_9_3 = request.form['cdr-9-3']
+    cdr_9_4 = request.form['cdr-9-4']
+    cdr_9_5 = request.form['cdr-9-5']
+    cdr_9_6 = request.form['cdr-9-6']
+    cdr_9_7 = request.form['cdr-9-7']
+    cdr_9_8 = request.form['cdr-9-8']
+    cdr_9_9 = request.form['cdr-9-9']
+    # cdr result
+    cdr_res1 = float(request.form['cdr_res1'])
+    cdr_res2 = float(request.form['cdr_res2'])
+    cdr_res3 = float(request.form['cdr_res3'])
+    cdr_res4 = float(request.form['cdr_res4'])
+    cdr_res5 = float(request.form['cdr_res5'])
+    cdr_res6 = float(request.form['cdr_res6'])
+    hasil_cdr = math.ceil((cdr_res1 + cdr_res2 + cdr_res3 + cdr_res4 + cdr_res5 + cdr_res6) / 6)
+    # fetch
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    query = "INSERT INTO tbl_diagnosa (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    param = (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9)
+    cursor.execute(query, param)
+    conn.commit()
+    return redirect('/pasien')
 
 # run the app
 app.run()
