@@ -51,8 +51,16 @@
                     <a href="#" data-toggle="modal" data-target="#edit{{row.id_pasien}}"
                       class="btn btn-warning btn-sm btn-icon icon-left"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
                     &nbsp
+                    {% if row.status_pasien == 'Belum Diagnosa' %}
                     <a href="{{ url_for('diagnosa', id_pasien=row.id_pasien) }}"
-                      class="btn btn-success btn-sm btn-icon icon-left"><i class="fa fa-search"></i>&nbsp;&nbsp;Diagnosa</a>
+                      class="btn btn-success btn-sm btn-icon icon-left"><i
+                        class="fa fa-search"></i>&nbsp;&nbsp;Diagnosa</a>
+                    {% endif %}
+                    {% if row.status_pasien == 'Sudah Diagnosa' %}
+                    <a href="{{ url_for('hasil_diagnosa', id_pasien=row.id_pasien) }}"
+                      class="btn btn-success btn-sm btn-icon icon-left"><i
+                        class="fa fa-search"></i>&nbsp;&nbsp;Hasil</a>
+                    {% endif %}
                     <!-- <a href="#" data-toggle="modal" data-target="#hapus{{row.id_pasien}}"
                       class="btn btn-danger btn-sm btn-icon icon-left"><i class="fa fa-trash"></i>&nbsp;&nbsp;Hapus</a> -->
                   </td>

@@ -373,16 +373,40 @@ def tambah_hasil():
     cdr_res3 = float(request.form['cdr_res3'])
     cdr_res4 = float(request.form['cdr_res4'])
     cdr_res5 = float(request.form['cdr_res5'])
-    cdr_res6 = float(request.form['cdr_res6'])
+    cdr_res6 = float(request.form['cdr_res6']) 
     hasil_cdr = math.ceil((cdr_res1 + cdr_res2 + cdr_res3 + cdr_res4 + cdr_res5 + cdr_res6) / 6)
     # fetch
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "INSERT INTO tbl_diagnosa (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    param = (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9)
+    query = "INSERT INTO tbl_diagnosa (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    param = (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6)
+    cursor.execute(query, param)
+    conn.commit()
+    # fetch 2
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    query = "UPDATE tbl_pasien SET status_pasien='Sudah Diagnosa' WHERE id_pasien=%s"
+    param = (id_pasien)
     cursor.execute(query, param)
     conn.commit()
     return redirect('/pasien')
+
+@app.route('/hasil_diagnosa/<id_pasien>')
+def hasil_diagnosa(id_pasien):
+    is_login = session.get('logined')
+    if is_login == True:
+        session['page'] = 'pasien'
+        # fetch
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        query = "SELECT p.*, d.* FROM tbl_pasien p, tbl_diagnosa d WHERE p.id_pasien=%s AND p.id_pasien = d.id_pasien"
+        param = (id_pasien)
+        cursor.execute(query, param)
+        columns = cursor.description
+        result = [{columns[index][0]:column for index,column in enumerate(value)} for value in cursor.fetchall()]
+        return flask.render_template('kuesioner_hasil.html', data=result)
+    else:
+        return redirect('/')
 
 # run the app
 app.run()
