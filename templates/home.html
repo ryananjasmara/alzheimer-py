@@ -40,17 +40,17 @@
               class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <div class="col-lg-6 col-xs-6">
-        <div class="small-box bg-yellow">
-          <div class="inner">
-            <h3>120</h3>
-
-            <p>Gejala</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-copy"></i>
-          </div>
-          <a href="" class="small-box-footer">Info Lengkap <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+    {% endif %}
+    {% if session['login_as'] == 'dokter': %}
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <H1>Hallo Selamat Datang di Website Alzheimer!
+            <br>
+            <br>
+            Website ini dapat membantu dokter umum dalam mendeteksi dini penyakit
+            alzheimer pada orang tua</H1>
         </div>
       </div>
     </div>

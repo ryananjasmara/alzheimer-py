@@ -90,6 +90,28 @@
                     <h4>{{ data[0].hasil_cdr }}</h4>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <h4>Hasil Pemeriksaan</h4>
+                  </td>
+                  <td style="text-align: center">
+                    <h4>:</h4>
+                  </td>
+                  <td>
+                    <h4>{{ data[0].hasil_diagnosa }}</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4>Nama Dokter</h4>
+                  </td>
+                  <td style="text-align: center">
+                    <h4>:</h4>
+                  </td>
+                  <td>
+                    <h4>{{ data[0].nama_dokter }}</h4>
+                  </td>
+                </tr>
               </table>
             </div>
             <form action="{{ url_for('tambah_hasil') }}" method="POST">
@@ -100,11 +122,11 @@
                 <div>
                   <h3>Orientasi</h3>
                   <div class="form-group">
-                    <h5>1. Sekarang (tahun), (musim), (bulan), (tanggal), (hari) apa?</h5>
+                    <h5>1. Sekarang (tahun), (musim), (bulan), (tanggal), (hari) apa? <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse1" value="{{ data[0].mmse1 }}" min="0" max="5" disabled>
                   </div>
                   <div class="form-group">
-                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)?</h5>
+                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)? <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse2" value="{{ data[0].mmse2 }}" min="0" max="5" disabled>
                   </div>
                 </div>
@@ -113,7 +135,7 @@
                   <div class="form-group">
                     <h5>3. Sebutkan 3 buah nama benda (Apel, Meja, Koin). Tiap benda 1 detik, pasien disuruh mengulangi
                       ketiga nama benda tadi. Nilai 1 untuk tiap nama benda yang benar. Ulangi sampai pasien dapat
-                      menyebutkan dengan benar dan catat jumlah pengulangan.</h5>
+                      menyebutkan dengan benar dan catat jumlah pengulangan. <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse3" value="{{ data[0].mmse3 }}" min="0" max="3" disabled>
                   </div>
                 </div>
@@ -122,42 +144,42 @@
                   <div class="form-group">
                     <h5>4. Kurangi 100 dengan 7. Nilai 1 untuk tiap jawaban yang benar. Hentikan setelah 5 jawaban. Atau
                       disuruh mengeja terbalik kata "WAHYU" (nilai diberi pada huruf yang benar sebelum kesalahan.
-                      misalnya uyahw = 2 nilai)</h5>
+                      misalnya uyahw = 2 nilai) <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse4" value="{{ data[0].mmse4 }}" min="0" max="5" disabled>
                   </div>
                 </div>
                 <div>
                   <h3>Mengingat Kembali (Recall)</h3>
                   <div class="form-group">
-                    <h5>5. Pasien disuruh menyebut kembali nama 3 benda diatas</h5>
+                    <h5>5. Pasien disuruh menyebut kembali nama 3 benda diatas <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse5" value="{{ data[0].mmse5 }}" min="0" max="3" disabled>
                   </div>
                 </div>
                 <div>
                   <h3>Bahasa</h3>
                   <div class="form-group">
-                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku)</h5>
+                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku) <b>(maksimal 2)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse6" value="{{ data[0].mmse6 }}" min="0" max="2" disabled>
                   </div>
                   <div class="form-group">
-                    <h5>7. Pasien disuruh mengulang kata-kata "namun", "tanpa", "bila"</h5>
+                    <h5>7. Pasien disuruh mengulang kata-kata "namun", "tanpa", "bila" <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse7" value="{{ data[0].mmse7 }}" min="0" max="1" disabled>
                   </div>
                   <div class="form-group">
                     <h5>8. Pasien disuruh melakukan perintah "ambil kertas ini dengan tangan anda, lipatlah menjadi dua
-                      dan letakkan di lantai"</h5>
+                      dan letakkan di lantai" <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse8" value="{{ data[0].mmse8 }}" min="0" max="3" disabled>
                   </div>
                   <div class="form-group">
-                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda"</h5>
+                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda" <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse9" value="{{ data[0].mmse9 }}" min="0" max="1" disabled>
                   </div>
                   <div class="form-group">
-                    <h5>10. Pasien disuruh menulis dengan spontan</h5>
+                    <h5>10. Pasien disuruh menulis dengan spontan <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse10" value="{{ data[0].mmse10 }}" min="0" max="1" disabled>
                   </div>
                   <div class="form-group">
-                    <h5>11. Pasien disuruh menggambar dengan bentuk di bawah ini</h5>
+                    <h5>11. Pasien disuruh menggambar dengan bentuk di bawah ini <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse11" value="{{ data[0].mmse11 }}" min="0" max="1" disabled>
                   </div>
                 </div>

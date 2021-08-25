@@ -72,17 +72,19 @@
             </div>
             <form action="{{ url_for('tambah_hasil') }}" method="POST">
               <input type="hidden" name="id_pasien" value="{{ data[0].id_pasien }}" />
+              <input type="hidden" name="tanggal_lahir_pasien" value="{{ data[0].tanggal_lahir_pasien }}" />
+              <input type="hidden" name="jenis_kelamin_pasien" value="{{ data[0].jenis_kelamin_pasien }}" />
               <div>
                 <h2>Pemeriksaan Status Mental Mini (MMSE)</h2>
                 <hr>
                 <div>
                   <h3>Orientasi</h3>
                   <div class="form-group">
-                    <h5>1. Sekarang (tahun), (musim), (bulan), (tanggal), (hari) apa?</h5>
+                    <h5>1. Sekarang (tahun), (musim), (bulan), (tanggal), (hari) apa? <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse1" value="0" min="0" max="5">
                   </div>
                   <div class="form-group">
-                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)?</h5>
+                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)? <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse2" value="0" min="0" max="5">
                   </div>
                 </div>
@@ -91,7 +93,7 @@
                   <div class="form-group">
                     <h5>3. Sebutkan 3 buah nama benda (Apel, Meja, Koin). Tiap benda 1 detik, pasien disuruh mengulangi
                       ketiga nama benda tadi. Nilai 1 untuk tiap nama benda yang benar. Ulangi sampai pasien dapat
-                      menyebutkan dengan benar dan catat jumlah pengulangan.</h5>
+                      menyebutkan dengan benar dan catat jumlah pengulangan. <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse3" value="0" min="0" max="3">
                   </div>
                 </div>
@@ -100,42 +102,42 @@
                   <div class="form-group">
                     <h5>4. Kurangi 100 dengan 7. Nilai 1 untuk tiap jawaban yang benar. Hentikan setelah 5 jawaban. Atau
                       disuruh mengeja terbalik kata "WAHYU" (nilai diberi pada huruf yang benar sebelum kesalahan.
-                      misalnya uyahw = 2 nilai)</h5>
+                      misalnya uyahw = 2 nilai) <b>(maksimal 5)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse4" value="0" min="0" max="5">
                   </div>
                 </div>
                 <div>
                   <h3>Mengingat Kembali (Recall)</h3>
                   <div class="form-group">
-                    <h5>5. Pasien disuruh menyebut kembali nama 3 benda diatas</h5>
+                    <h5>5. Pasien disuruh menyebut kembali nama 3 benda diatas <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse5" value="0" min="0" max="3">
                   </div>
                 </div>
                 <div>
                   <h3>Bahasa</h3>
                   <div class="form-group">
-                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku)</h5>
+                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku) <b>(maksimal 2)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse6" value="0" min="0" max="2 ">
                   </div>
                   <div class="form-group">
-                    <h5>7. Pasien disuruh mengulang kata-kata "namun", "tanpa", "bila"</h5>
+                    <h5>7. Pasien disuruh mengulang kata-kata "namun", "tanpa", "bila" <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse7" value="0" min="0" max="1">
                   </div>
                   <div class="form-group">
                     <h5>8. Pasien disuruh melakukan perintah "ambil kertas ini dengan tangan anda, lipatlah menjadi dua
-                      dan letakkan di lantai"</h5>
+                      dan letakkan di lantai" <b>(maksimal 3)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse8" value="0" min="0" max="3">
                   </div>
                   <div class="form-group">
-                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda"</h5>
+                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda" <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse9" value="0" min="0" max="1">
                   </div>
                   <div class="form-group">
-                    <h5>10. Pasien disuruh menulis dengan spontan</h5>
+                    <h5>10. Pasien disuruh menulis dengan spontan <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse10" value="0" min="0" max="1">
                   </div>
                   <div class="form-group">
-                    <h5>11. Pasien disuruh menggambar dengan bentuk di bawah ini</h5>
+                    <h5>11. Pasien disuruh menggambar dengan bentuk di bawah ini <b>(maksimal 1)</b></h5>
                     <input type="number" class="form-control" id="" name="mmse11" value="0" min="0" max="1">
                   </div>
                 </div>

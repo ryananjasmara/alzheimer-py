@@ -2,14 +2,19 @@
 import flask
 import hashlib
 import math
+import pickle
 from flask import Flask, render_template, request, json, redirect, session, url_for
 from flaskext.mysql import MySQL
-from sklearn import svm
+from datetime import date
 
 # create the flask app
 app = Flask(__name__)
 app.secret_key = 'alzheimerflaskbescret'
 mysql = MySQL()
+
+# Pickle
+filename = 'ModelSVM'
+load_model = pickle.load(open(filename,'rb'))
 
 # Other configurations
 app.config['JSON_SORT_KEYS'] = False
@@ -34,7 +39,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         # check if login as admin / dokter
-        if email == 'admin@alz.com' and password == 'alz2021':
+        if email == '123@123' and password == '123':
             session['logined'] = True
             session['login_as'] = 'admin'
             session['nama'] = 'Admin'
@@ -260,6 +265,7 @@ def diagnosa(id_pasien):
 def tambah_hasil():
     # data
     id_pasien = request.form['id_pasien']
+    id_dokter = session['id']
     # mmse
     mmse1 = int(request.form['mmse1'])
     mmse2 = int(request.form['mmse2'])
@@ -375,11 +381,18 @@ def tambah_hasil():
     cdr_res5 = float(request.form['cdr_res5'])
     cdr_res6 = float(request.form['cdr_res6']) 
     hasil_cdr = math.ceil((cdr_res1 + cdr_res2 + cdr_res3 + cdr_res4 + cdr_res5 + cdr_res6) / 6)
+    # for prediction
+    jenis_kelamin = request.form['jenis_kelamin_pasien']
+    jk = 1 if jenis_kelamin == 'Laki-laki' else 0
+    tahun_lahir = request.form['tanggal_lahir_pasien'][-4:]
+    umur = date.today().year - int(tahun_lahir)
+    prediction=load_model.predict([[jk, umur, hasil_mmse, hasil_cdr]])
+    hasil_prediksi = 'Alzheimer' if prediction[0] == 'Demented' else 'Tidak Alzheimer'
     # fetch
     conn = mysql.connect()
     cursor = conn.cursor()
-    query = "INSERT INTO tbl_diagnosa (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    param = (id_pasien, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6)
+    query = "INSERT INTO tbl_diagnosa (id_pasien, id_dokter, hasil_diagnosa, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    param = (id_pasien, id_dokter, hasil_prediksi, hasil_mmse, hasil_cdr, mmse1, mmse2, mmse3, mmse4, mmse5, mmse6, mmse7, mmse8, mmse9, mmse10, mmse11, cdr_1_1, cdr_1_1a, cdr_1_2, cdr_1_3, cdr_1_4, cdr_1_5, cdr_1_6, cdr_1_7,cdr_1_8, cdr_1_9a, cdr_1_9b, cdr_1_10, cdr_1_11, cdr_1_12a, cdr_1_12b,cdr_1_12c, cdr_1_12d, cdr_1_13, cdr_1_14, cdr_1_15, cdr_2_1, cdr_2_2, cdr_2_3, cdr_2_4, cdr_2_5, cdr_2_6, cdr_2_7, cdr_2_8, cdr_3_1, cdr_3_2, cdr_3_3, cdr_3_4, cdr_3_5, cdr_3_6, cdr_4_1, cdr_4_2, cdr_4_3, cdr_4_4a, cdr_4_4b, cdr_4_5, cdr_4_6, cdr_4_7, cdr_4_8, cdr_4_9, cdr_4_10, cdr_5_1a, cdr_5_1b, cdr_5_2a, cdr_5_2b, cdr_5_3, cdr_5_4, cdr_5_5, cdr_6_1, cdr_6_2, cdr_6_3, cdr_6_4, cdr_7_1, cdr_7_2a, cdr_7_2b, cdr_7_4, cdr_7_5, cdr_7_6a, cdr_7_6b, cdr_7_6c, cdr_7_6d, cdr_7_7, cdr_7_8, cdr_7_9, cdr_8_1, cdr_8_2, cdr_8_3, cdr_8_4, cdr_8_5, cdr_8_6, cdr_8_7, cdr_8_8, cdr_9_1, cdr_9_2, cdr_9_3, cdr_9_4, cdr_9_5, cdr_9_6, cdr_9_7, cdr_9_8, cdr_9_9, cdr_res1, cdr_res2, cdr_res3, cdr_res4, cdr_res5, cdr_res6)
     cursor.execute(query, param)
     conn.commit()
     # fetch 2
@@ -399,7 +412,7 @@ def hasil_diagnosa(id_pasien):
         # fetch
         conn = mysql.connect()
         cursor = conn.cursor()
-        query = "SELECT p.*, d.* FROM tbl_pasien p, tbl_diagnosa d WHERE p.id_pasien=%s AND p.id_pasien = d.id_pasien"
+        query = "SELECT p.*, d.*, dk.* FROM tbl_pasien p, tbl_diagnosa d, tbl_dokter dk WHERE p.id_pasien=%s AND p.id_pasien = d.id_pasien AND dk.id_dokter = d.id_dokter"
         param = (id_pasien)
         cursor.execute(query, param)
         columns = cursor.description
