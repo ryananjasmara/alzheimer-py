@@ -123,11 +123,59 @@
                   <h3>Orientasi</h3>
                   <div class="form-group">
                     <h5>1. Sekarang (tahun), (musim), (bulan), (tanggal), (hari) apa? <b>(maksimal 5)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse1" value="{{ data[0].mmse1 }}" min="0" max="5" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="0" disabled {% if data[0].mmse1==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="1" disabled {% if data[0].mmse1==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="2" disabled {% if data[0].mmse1==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="3" disabled {% if data[0].mmse1==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="4" disabled {% if data[0].mmse1==4 %} checked {% endif %}>
+                      <label class="form-check-label">4</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse1" value="5" disabled {% if data[0].mmse1==5 %} checked {% endif %}>
+                      <label class="form-check-label">5</label>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)? <b>(maksimal 5)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse2" value="{{ data[0].mmse2 }}" min="0" max="5" disabled>
+                    <h5>2. Kita berada dimana (negara), (provinsi), (kota), (rumah sakit), (lantai / kamar)?
+                      <b>(maksimal 5)</b>
+                    </h5>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="0" disabled {% if data[0].mmse2==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="1" disabled {% if data[0].mmse2==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="2" disabled {% if data[0].mmse2==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="3" disabled {% if data[0].mmse2==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="4" disabled {% if data[0].mmse2==4 %} checked {% endif %}>
+                      <label class="form-check-label">4</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse2" value="5" disabled {% if data[0].mmse2==5 %} checked {% endif %}>
+                      <label class="form-check-label">5</label>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -136,7 +184,22 @@
                     <h5>3. Sebutkan 3 buah nama benda (Apel, Meja, Koin). Tiap benda 1 detik, pasien disuruh mengulangi
                       ketiga nama benda tadi. Nilai 1 untuk tiap nama benda yang benar. Ulangi sampai pasien dapat
                       menyebutkan dengan benar dan catat jumlah pengulangan. <b>(maksimal 3)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse3" value="{{ data[0].mmse3 }}" min="0" max="3" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse3" value="0" disabled {% if data[0].mmse3==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse3" value="1" disabled {% if data[0].mmse3==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse3" value="2" disabled {% if data[0].mmse3==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse3" value="3" disabled {% if data[0].mmse3==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -145,42 +208,137 @@
                     <h5>4. Kurangi 100 dengan 7. Nilai 1 untuk tiap jawaban yang benar. Hentikan setelah 5 jawaban. Atau
                       disuruh mengeja terbalik kata "WAHYU" (nilai diberi pada huruf yang benar sebelum kesalahan.
                       misalnya uyahw = 2 nilai) <b>(maksimal 5)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse4" value="{{ data[0].mmse4 }}" min="0" max="5" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="0" disabled {% if data[0].mmse4==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="1" disabled {% if data[0].mmse4==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="2" disabled {% if data[0].mmse4==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="3" disabled {% if data[0].mmse4==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="4" disabled {% if data[0].mmse4==4 %} checked {% endif %}>
+                      <label class="form-check-label">4</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse4" value="5" disabled {% if data[0].mmse4==5 %} checked {% endif %}>
+                      <label class="form-check-label">5</label>
+                    </div>
                   </div>
                 </div>
                 <div>
                   <h3>Mengingat Kembali (Recall)</h3>
                   <div class="form-group">
                     <h5>5. Pasien disuruh menyebut kembali nama 3 benda diatas <b>(maksimal 3)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse5" value="{{ data[0].mmse5 }}" min="0" max="3" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse5" value="0" disabled {% if data[0].mmse5==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse5" value="1" disabled {% if data[0].mmse5==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse5" value="2" disabled {% if data[0].mmse5==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse5" value="3" disabled {% if data[0].mmse5==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
                   </div>
                 </div>
                 <div>
                   <h3>Bahasa</h3>
                   <div class="form-group">
-                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku) <b>(maksimal 2)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse6" value="{{ data[0].mmse6 }}" min="0" max="2" disabled>
+                    <h5>6. Pasien disuruh menyebutkan nama benda yang ditunjukkan (pensil, buku) <b>(maksimal 2)</b>
+                    </h5>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse6" value="0" disabled {% if data[0].mmse6==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse6" value="1" disabled {% if data[0].mmse6==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse6" value="2" disabled {% if data[0].mmse6==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
                   </div>
                   <div class="form-group">
                     <h5>7. Pasien disuruh mengulang kata-kata "namun", "tanpa", "bila" <b>(maksimal 1)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse7" value="{{ data[0].mmse7 }}" min="0" max="1" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse7" value="0" disabled {% if data[0].mmse7==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse7" value="1" disabled {% if data[0].mmse7==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
                   </div>
                   <div class="form-group">
                     <h5>8. Pasien disuruh melakukan perintah "ambil kertas ini dengan tangan anda, lipatlah menjadi dua
                       dan letakkan di lantai" <b>(maksimal 3)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse8" value="{{ data[0].mmse8 }}" min="0" max="3" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse8" value="0" disabled {% if data[0].mmse8==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse8" value="1" disabled {% if data[0].mmse8==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse8" value="2" disabled {% if data[0].mmse8==2 %} checked {% endif %}>
+                      <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse8" value="3" disabled {% if data[0].mmse8==3 %} checked {% endif %}>
+                      <label class="form-check-label">3</label>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda" <b>(maksimal 1)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse9" value="{{ data[0].mmse9 }}" min="0" max="1" disabled>
+                    <h5>9. Pasien disuruh membaca dan melakukan perintah "pejamkanlah mata anda" <b>(maksimal 1)</b>
+                    </h5>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse9" value="0" disabled {% if data[0].mmse9==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse9" value="1" disabled {% if data[0].mmse9==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
                   </div>
                   <div class="form-group">
                     <h5>10. Pasien disuruh menulis dengan spontan <b>(maksimal 1)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse10" value="{{ data[0].mmse10 }}" min="0" max="1" disabled>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse10" value="0" disabled {% if data[0].mmse10==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse10" value="1" disabled {% if data[0].mmse10==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
                   </div>
                   <div class="form-group">
                     <h5>11. Pasien disuruh menggambar dengan bentuk di bawah ini <b>(maksimal 1)</b></h5>
-                    <input type="number" class="form-control" id="" name="mmse11" value="{{ data[0].mmse11 }}" min="0" max="1" disabled>
+                    <img src="{{ url_for('static', filename='Screenshot_121.png') }}" />
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse11" value="0" disabled {% if data[0].mmse11==0 %} checked {% endif %}>
+                      <label class="form-check-label">0</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="mmse11" value="1" disabled {% if data[0].mmse11==1 %} checked {% endif %}>
+                      <label class="form-check-label">1</label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -193,63 +351,75 @@
                 <div class="form-group">
                   <h5>1. Apakah dia memiliki masalah dengan ingatannya atau berpikir?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-1" value="0" disabled {% if data[0].cdr_1_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-1" value="0" disabled {% if
+                      data[0].cdr_1_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-1" value="1" disabled {% if data[0].cdr_1_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-1" value="1" disabled {% if
+                      data[0].cdr_1_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>1a. Jika ya, apakah ini masalah biasa (berlawanan dengan tidak teratur)?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-1a" value="0" disabled {% if data[0].cdr_1_1a == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-1a" value="0" disabled {% if
+                      data[0].cdr_1_1a==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-1a" value="1" disabled {% if data[0].cdr_1_1a == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-1a" value="1" disabled {% if
+                      data[0].cdr_1_1a==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>2. Bisakah dia mengingat kejadian baru-baru ini?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-2" value="0"disabled {% if data[0].cdr_1_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-2" value="0" disabled {% if
+                      data[0].cdr_1_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-2" value="1"disabled {% if data[0].cdr_1_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-2" value="1" disabled {% if
+                      data[0].cdr_1_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-2" value="2"disabled {% if data[0].cdr_1_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-2" value="2" disabled {% if
+                      data[0].cdr_1_2==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>3. Bisakah dia mengingat daftar pendek barang (belanja)?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-3" value="0" disabled {% if data[0].cdr_1_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-3" value="0" disabled {% if
+                      data[0].cdr_1_3==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-3" value="1" disabled {% if data[0].cdr_1_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-3" value="1" disabled {% if
+                      data[0].cdr_1_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-3" value="2" disabled {% if data[0].cdr_1_3 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-3" value="2" disabled {% if
+                      data[0].cdr_1_3==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Apakah ada beberapa ingatan yang memburuk selama masa lalu?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-4" value="0" disabled {% if data[0].cdr_1_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-4" value="0" disabled {% if
+                      data[0].cdr_1_4==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-4" value="1" disabled {% if data[0].cdr_1_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-4" value="1" disabled {% if
+                      data[0].cdr_1_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -259,11 +429,13 @@
                     (atau kegiatan pra-pensiun)?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-5" value="0" disabled {% if data[0].cdr_1_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-5" value="0" disabled {% if
+                      data[0].cdr_1_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-5" value="1" disabled {% if data[0].cdr_1_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-5" value="1" disabled {% if
+                      data[0].cdr_1_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -272,30 +444,36 @@
                     perayaan, pernikahan keluarga) dalam beberapa minggu setelah acara?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-6" value="0" disabled {% if data[0].cdr_1_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-6" value="0" disabled {% if
+                      data[0].cdr_1_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-6" value="1" disabled {% if data[0].cdr_1_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-6" value="1" disabled {% if
+                      data[0].cdr_1_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-6" value="2" disabled {% if data[0].cdr_1_6 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-6" value="2" disabled {% if
+                      data[0].cdr_1_6==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>7. Apakah dia lupa detail acara yang baru saja terjadi?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-7" value="0" disabled {% if data[0].cdr_1_7 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-7" value="0" disabled {% if
+                      data[0].cdr_1_7==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-7" value="1" disabled {% if data[0].cdr_1_7 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-7" value="1" disabled {% if
+                      data[0].cdr_1_7==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-7" value="2" disabled {% if data[0].cdr_1_7 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-7" value="2" disabled {% if
+                      data[0].cdr_1_7==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                 </div>
@@ -304,15 +482,18 @@
                     masa lalu yang jauh (misalnya, tanggal lahir, tanggal pernikahan, tempat kerja)?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-8" value="0" disabled {% if data[0].cdr_1_8 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-8" value="0" disabled {% if
+                      data[0].cdr_1_8==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-8" value="1" disabled {% if data[0].cdr_1_8 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-8" value="1" disabled {% if
+                      data[0].cdr_1_8==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-1-8" value="2" disabled {% if data[0].cdr_1_8 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-1-8" value="2" disabled {% if
+                      data[0].cdr_1_8==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                 </div>
@@ -335,13 +516,8 @@
                 </div>
                 <div class="form-group">
                   <h5>12. Apa sekolah terakhir yang dia ikuti?</h5>
-                  <input type="text" class="form-control" id="" name="cdr-1-12a" value="{{ data[0].cdr_1_12a }}" disabled>
-                  <h5>Nama</h5>
-                  <input type="text" class="form-control" id="" name="cdr-1-12b" value="{{ data[0].cdr_1_12b }}" disabled>
-                  <h5>Tempat</h5>
-                  <input type="text" class="form-control" id="" name="cdr-1-12c" value="{{ data[0].cdr_1_12c }}" disabled>
-                  <h5>Kelas</h5>
-                  <input type="text" class="form-control" id="" name="cdr-1-12d" value="{{ data[0].cdr_1_12d }}" disabled>
+                  <input type="text" class="form-control" id="" name="cdr-1-12a" value="{{ data[0].cdr_1_12a }}"
+                    disabled>
                 </div>
                 <div class="form-group">
                   <h5>13. Apa pekerjaan/pekerjaan utamanya (atau pekerjaan pasangan jika pasien tidak bekerja)?</h5>
@@ -361,76 +537,92 @@
                 <div class="form-group">
                   <h5>1. Tanggal?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-1" value="0" disabled {% if data[0].cdr_2_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-1" value="0" disabled {% if
+                      data[0].cdr_2_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-1" value="1" disabled {% if data[0].cdr_2_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-1" value="1" disabled {% if
+                      data[0].cdr_2_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-1" value="2" disabled {% if data[0].cdr_2_1 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-1" value="2" disabled {% if
+                      data[0].cdr_2_1==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-1" value="3" disabled {% if data[0].cdr_2_1 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-1" value="3" disabled {% if
+                      data[0].cdr_2_1==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>2. Bulan?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-2" value="0" disabled {% if data[0].cdr_2_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-2" value="0" disabled {% if
+                      data[0].cdr_2_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-2" value="1" disabled {% if data[0].cdr_2_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-2" value="1" disabled {% if
+                      data[0].cdr_2_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-2" value="2" disabled {% if data[0].cdr_2_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-2" value="2" disabled {% if
+                      data[0].cdr_2_2==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-2" value="3" disabled {% if data[0].cdr_2_2 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-2" value="3" disabled {% if
+                      data[0].cdr_2_2==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>3. Tahun?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-3" value="0" disabled {% if data[0].cdr_2_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-3" value="0" disabled {% if
+                      data[0].cdr_2_3==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-3" value="1" disabled {% if data[0].cdr_2_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-3" value="1" disabled {% if
+                      data[0].cdr_2_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-3" value="2" disabled {% if data[0].cdr_2_3 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-3" value="2" disabled {% if
+                      data[0].cdr_2_3==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-3" value="3" disabled {% if data[0].cdr_2_3 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-3" value="3" disabled {% if
+                      data[0].cdr_2_3==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Hari?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-4" value="0" disabled {% if data[0].cdr_2_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-4" value="0" disabled {% if
+                      data[0].cdr_2_4==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-4" value="1" disabled {% if data[0].cdr_2_4 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-4" value="1" disabled {% if
+                      data[0].cdr_2_4==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-4" value="2" disabled {% if data[0].cdr_2_4 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-4" value="2" disabled {% if
+                      data[0].cdr_2_4==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-4" value="3" disabled {% if data[0].cdr_2_4 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-4" value="3" disabled {% if
+                      data[0].cdr_2_4==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -438,38 +630,46 @@
                   <h5>5. Apakah dia mengalami kesulitan dengan hubungan waktu (ketika peristiwa terjadi dalam hubungan
                     satu sama lain)?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-5" value="0" disabled {% if data[0].cdr_2_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-5" value="0" disabled {% if
+                      data[0].cdr_2_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-5" value="1" disabled {% if data[0].cdr_2_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-5" value="1" disabled {% if
+                      data[0].cdr_2_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-5" value="2" disabled {% if data[0].cdr_2_5 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-5" value="2" disabled {% if
+                      data[0].cdr_2_5==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-5" value="3" disabled {% if data[0].cdr_2_5 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-5" value="3" disabled {% if
+                      data[0].cdr_2_5==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>6. Bisakah dia menemukan jalannya di jalan-jalan yang sudah dikenalnya?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-6" value="0" disabled {% if data[0].cdr_2_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-6" value="0" disabled {% if
+                      data[0].cdr_2_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-6" value="1" disabled {% if data[0].cdr_2_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-6" value="1" disabled {% if
+                      data[0].cdr_2_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-6" value="2" disabled {% if data[0].cdr_2_6 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-6" value="2" disabled {% if
+                      data[0].cdr_2_6==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-6" value="3" disabled {% if data[0].cdr_2_6 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-6" value="3" disabled {% if
+                      data[0].cdr_2_6==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -477,38 +677,46 @@
                   <h5>7. Seberapa sering dia tahu bagaimana pergi dari satu tempat ke tempat lain di luar lingkungannya?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-7" value="0" disabled {% if data[0].cdr_2_7 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-7" value="0" disabled {% if
+                      data[0].cdr_2_7==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-7" value="1" disabled {% if data[0].cdr_2_7 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-7" value="1" disabled {% if
+                      data[0].cdr_2_7==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-7" value="2" disabled {% if data[0].cdr_2_7 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-7" value="2" disabled {% if
+                      data[0].cdr_2_7==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-7" value="3" disabled {% if data[0].cdr_2_7 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-7" value="3" disabled {% if
+                      data[0].cdr_2_7==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>8. Seberapa sering dia dapat menemukan jalan di sekitar rumah?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-8" value="0" disabled {% if data[0].cdr_2_8 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-8" value="0" disabled {% if
+                      data[0].cdr_2_8==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-8" value="1" disabled {% if data[0].cdr_2_8 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-8" value="1" disabled {% if
+                      data[0].cdr_2_8==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-8" value="2" disabled {% if data[0].cdr_2_8 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-8" value="2" disabled {% if
+                      data[0].cdr_2_8==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-2-8" value="3" disabled {% if data[0].cdr_2_8 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-2-8" value="3" disabled {% if
+                      data[0].cdr_2_8==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -519,23 +727,28 @@
                     anda
                     akan mempertimbangkannya</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-1" value="0" disabled {% if data[0].cdr_3_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-1" value="0" disabled {% if
+                      data[0].cdr_3_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Sebagus yang pernah ada?</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-1" value="1" disabled {% if data[0].cdr_3_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-1" value="1" disabled {% if
+                      data[0].cdr_3_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Bagus, tapi tidak sebagus sebelumnya?</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-1" value="2" disabled {% if data[0].cdr_3_1 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-1" value="2" disabled {% if
+                      data[0].cdr_3_1==2 %} checked {% endif %}>
                     <label class="form-check-label">Pas-pasan?</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-1" value="3" disabled {% if data[0].cdr_3_1 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-1" value="3" disabled {% if
+                      data[0].cdr_3_1==3 %} checked {% endif %}>
                     <label class="form-check-label">Kurang?</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-1" value="4" disabled {% if data[0].cdr_3_1 == 4 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-1" value="4" disabled {% if
+                      data[0].cdr_3_1==4 %} checked {% endif %}>
                     <label class="form-check-label">Tidak bisa sama sekali?</label>
                   </div>
                 </div>
@@ -544,15 +757,18 @@
                     meninggalkan
                     tip kecil):</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-2" value="0" disabled {% if data[0].cdr_3_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-2" value="0" disabled {% if
+                      data[0].cdr_3_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Tidak ada kerugian</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-2" value="1" disabled {% if data[0].cdr_3_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-2" value="1" disabled {% if
+                      data[0].cdr_3_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Beberapa kerugian</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-2" value="2" disabled {% if data[0].cdr_3_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-2" value="2" disabled {% if
+                      data[0].cdr_3_2==2 %} checked {% endif %}>
                     <label class="form-check-label">Kerugian parah</label>
                   </div>
                 </div>
@@ -560,15 +776,18 @@
                   <h5>3. Nilai kemampuannya untuk menjaga rekening pengeluaran rumah tangga (misalnya, buku cek saldo,
                     membayar tagihan):</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-3" value="0" disabled {% if data[0].cdr_3_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-3" value="0" disabled {% if
+                      data[0].cdr_3_3==0 %} checked {% endif %}>
                     <label class="form-check-label">Tidak ada kerugian</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-3" value="1" disabled {% if data[0].cdr_3_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-3" value="1" disabled {% if
+                      data[0].cdr_3_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Beberapa kerugian</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-3" value="2" disabled {% if data[0].cdr_3_3 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-3" value="2" disabled {% if
+                      data[0].cdr_3_3==2 %} checked {% endif %}>
                     <label class="form-check-label">Kerugian parah</label>
                   </div>
                 </div>
@@ -576,34 +795,41 @@
                   <h5>4. Bisakah dia menangani keadaan darurat rumah tangga (misalnya, kebocoran pipa ledeng, kebakaran
                     kecil)?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-4" value="0" disabled {% if data[0].cdr_3_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-4" value="0" disabled {% if
+                      data[0].cdr_3_4==0 %} checked {% endif %}>
                     <label class="form-check-label">Seperti sebelumnya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-4" value="1" disabled {% if data[0].cdr_3_4 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-4" value="1" disabled {% if
+                      data[0].cdr_3_4==1 %} checked {% endif %}>
                     <label class="form-check-label">Lebih buruk dari sebelumnya karena kesulitan berpikir</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-4" value="2" disabled {% if data[0].cdr_3_4 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-4" value="2" disabled {% if
+                      data[0].cdr_3_4==2 %} checked {% endif %}>
                     <label class="form-check-label">Lebih buruk dari sebelumnya, alasan lain</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>5. Bisakah dia memahami situasi atau penjelasan?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-5" value="0" disabled {% if data[0].cdr_3_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-5" value="0" disabled {% if
+                      data[0].cdr_3_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-5" value="1" disabled {% if data[0].cdr_3_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-5" value="1" disabled {% if
+                      data[0].cdr_3_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-5" value="2" disabled {% if data[0].cdr_3_5 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-5" value="2" disabled {% if
+                      data[0].cdr_3_5==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-5" value="3" disabled {% if data[0].cdr_3_5 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-5" value="3" disabled {% if
+                      data[0].cdr_3_5==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -611,19 +837,23 @@
                   <h5>6. Apakah dia berperilaku* dengan tepat [yaitu, "cara dia dulu berperilaku sebelum timbulnya
                     penyakitnya"] dalam situasi sosial dan interaksi dengan orang lain?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-6" value="0" disabled {% if data[0].cdr_3_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-6" value="0" disabled {% if
+                      data[0].cdr_3_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-6" value="1" disabled {% if data[0].cdr_3_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-6" value="1" disabled {% if
+                      data[0].cdr_3_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-6" value="2" disabled {% if data[0].cdr_3_6 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-6" value="2" disabled {% if
+                      data[0].cdr_3_6==2 %} checked {% endif %}>
                     <label class="form-check-label">Jarang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-3-6" value="3" disabled {% if data[0].cdr_3_6 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-3-6" value="3" disabled {% if
+                      data[0].cdr_3_6==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -636,15 +866,18 @@
                     Jika tidak, lanjutkan ke item 2
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-1" value="0" disabled {% if data[0].cdr_4_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-1" value="0" disabled {% if
+                      data[0].cdr_4_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-1" value="1" disabled {% if data[0].cdr_4_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-1" value="1" disabled {% if
+                      data[0].cdr_4_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-1" value="2" disabled {% if data[0].cdr_4_1 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-1" value="2" disabled {% if
+                      data[0].cdr_4_1==2 %} checked {% endif %}>
                     <label class="form-check-label">N/A</label>
                   </div>
                 </div>
@@ -652,53 +885,63 @@
                   <h5>2. Apakah memori atau masalah berpikir berkontribusi pada keputusan pasien untuk pensiun?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-2" value="0" disabled {% if data[0].cdr_4_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-2" value="0" disabled {% if
+                      data[0].cdr_4_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-2" value="1" disabled {% if data[0].cdr_4_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-2" value="1" disabled {% if
+                      data[0].cdr_4_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-2" value="2" disabled {% if data[0].cdr_4_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-2" value="2" disabled {% if
+                      data[0].cdr_4_2==2 %} checked {% endif %}>
                     <label class="form-check-label">N/A</label>
                   </div>
                 </div>
                 <h5>Sosial</h5>
                 <div class=" form-group">
-                    <h5>3. Apakah pasien mengalami kesulitan yang signifikan dalam pekerjaannya karena masalah dengan
-                      memori atau pemikiran?
-                    </h5>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="cdr-4-3" value="0" disabled {% if data[0].cdr_4_3 == 0 %} checked {% endif %}>
-                      <label class="form-check-label">Kurang atau tidak pernah</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="cdr-4-3" value="1" disabled {% if data[0].cdr_4_3 == 1 %} checked {% endif %}>
-                      <label class="form-check-label">Kadang-kadang</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="cdr-4-3" value="2" disabled {% if data[0].cdr_4_3 == 2 %} checked {% endif %}>
-                      <label class="form-check-label">Biasanya</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="cdr-4-3" value="3" disabled {% if data[0].cdr_4_3 == 3 %} checked {% endif %}>
-                      <label class="form-check-label">Tidak tahu</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="cdr-4-3" value="4" disabled {% if data[0].cdr_4_3 == 4 %} checked {% endif %}>
-                      <label class="form-check-label">Tidak</label>
-                    </div>
+                  <h5>3. Apakah pasien mengalami kesulitan yang signifikan dalam pekerjaannya karena masalah dengan
+                    memori atau pemikiran?
+                  </h5>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-4-3" value="0" disabled {% if
+                      data[0].cdr_4_3==0 %} checked {% endif %}>
+                    <label class="form-check-label">Kurang atau tidak pernah</label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-4-3" value="1" disabled {% if
+                      data[0].cdr_4_3==1 %} checked {% endif %}>
+                    <label class="form-check-label">Kadang-kadang</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-4-3" value="2" disabled {% if
+                      data[0].cdr_4_3==2 %} checked {% endif %}>
+                    <label class="form-check-label">Biasanya</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-4-3" value="3" disabled {% if
+                      data[0].cdr_4_3==3 %} checked {% endif %}>
+                    <label class="form-check-label">Tidak tahu</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-4-3" value="4" disabled {% if
+                      data[0].cdr_4_3==4 %} checked {% endif %}>
+                    <label class="form-check-label">Tidak</label>
+                  </div>
+                </div>
                 <div class="form-group">
                   <h5>4. Apakah pasien mengendarai mobil/roda dua sekarang?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-4a" value="0" disabled {% if data[0].cdr_4_4a == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-4a" value="0" disabled {% if
+                      data[0].cdr_4_4a==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-4a" value="1" disabled {% if data[0].cdr_4_4a == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-4a" value="1" disabled {% if
+                      data[0].cdr_4_4a==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -706,11 +949,13 @@
                   <h5>Jika tidak, apakah ini karena masalah ingatan atau pemikiran?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-4b" value="0" disabled {% if data[0].cdr_4_4b == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-4b" value="0" disabled {% if
+                      data[0].cdr_4_4b==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-4b" value="1" disabled {% if data[0].cdr_4_4b == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-4b" value="1" disabled {% if
+                      data[0].cdr_4_4b==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -718,11 +963,13 @@
                   <h5>5. Jika dia masih mengemudi, apakah ada masalah atau risiko karena pemikiran yang buruk?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-5" value="0" disabled {% if data[0].cdr_4_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-5" value="0" disabled {% if
+                      data[0].cdr_4_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-5" value="1" disabled {% if data[0].cdr_4_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-5" value="1" disabled {% if
+                      data[0].cdr_4_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -730,19 +977,23 @@
                   <h5>6. Apakah dia mampu berbelanja kebutuhan secara mandiri?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-6" value="0" disabled {% if data[0].cdr_4_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-6" value="0" disabled {% if
+                      data[0].cdr_4_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Kurang atau tidak pernah</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-6" value="1" disabled {% if data[0].cdr_4_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-6" value="1" disabled {% if
+                      data[0].cdr_4_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-6" value="2" disabled {% if data[0].cdr_4_6 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-6" value="2" disabled {% if
+                      data[0].cdr_4_6==2 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-6" value="3" disabled {% if data[0].cdr_4_6 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-6" value="3" disabled {% if
+                      data[0].cdr_4_6==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -750,19 +1001,23 @@
                   <h5>7. Apakah ia mampu secara mandiri melakukan aktivitas di luar rumah?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-7" value="0" disabled {% if data[0].cdr_4_7 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-7" value="0" disabled {% if
+                      data[0].cdr_4_7==0 %} checked {% endif %}>
                     <label class="form-check-label">Kurang atau tidak pernah</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-7" value="1" disabled {% if data[0].cdr_4_7 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-7" value="1" disabled {% if
+                      data[0].cdr_4_7==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-7" value="2" disabled {% if data[0].cdr_4_7 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-7" value="2" disabled {% if
+                      data[0].cdr_4_7==2 %} checked {% endif %}>
                     <label class="form-check-label">Biasanya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-7" value="3" disabled {% if data[0].cdr_4_7 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-7" value="3" disabled {% if
+                      data[0].cdr_4_7==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak tahu</label>
                   </div>
                 </div>
@@ -770,11 +1025,13 @@
                   <h5>8. Apakah dia dibawa ke acara sosial di luar?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-8" value="0" disabled {% if data[0].cdr_4_8 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-8" value="0" disabled {% if
+                      data[0].cdr_4_8==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-8" value="1" disabled {% if data[0].cdr_4_8 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-8" value="1" disabled {% if
+                      data[0].cdr_4_8==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -782,11 +1039,13 @@
                   <h5>9. Akankah pengamat biasa dari perilaku pasien mengira pasien itu sakit?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-9" value="0" disabled {% if data[0].cdr_4_9 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-9" value="0" disabled {% if
+                      data[0].cdr_4_9==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-9" value="1" disabled {% if data[0].cdr_4_9 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-9" value="1" disabled {% if
+                      data[0].cdr_4_9==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -794,11 +1053,13 @@
                   <h5>10. Jika di panti jompo, apakah ia berpartisipasi dengan baik dalam fungsi sosial (berpikir)?
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-10" value="0" disabled {% if data[0].cdr_4_10 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-10" value="0" disabled {% if
+                      data[0].cdr_4_10==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-4-10" value="1" disabled {% if data[0].cdr_4_10 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-4-10" value="1" disabled {% if
+                      data[0].cdr_4_10==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -836,30 +1097,35 @@
                     ditanya langsung).
                   </h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-5-5" value="0" disabled {% if data[0].cdr_5_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-5-5" value="0" disabled {% if
+                      data[0].cdr_5_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Tidak ada fungsi yang berarti? (Melakukan aktivitas sederhana,
                       seperti
                       merapikan tempat tidur, hanya dengan banyak pengawasan)</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-5-5" value="1" disabled {% if data[0].cdr_5_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-5-5" value="1" disabled {% if
+                      data[0].cdr_5_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Fungsi dalam aktivitas terbatas saja (Dengan beberapa pengawasan,
                       mencuci piring dengan kebersihan yang dapat diterima; mengatur meja)</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-5-5" value="2" disabled {% if data[0].cdr_5_5 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-5-5" value="2" disabled {% if
+                      data[0].cdr_5_5==2 %} checked {% endif %}>
                     <label class="form-check-label">Berfungsi secara independen dalam beberapa aktivitas?
                       (Mengoperasikan
                       peralatan, seperti kompor/kompor; menyiapkan makanan sederhana)
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-5-5" value="3" disabled {% if data[0].cdr_5_5 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-5-5" value="3" disabled {% if
+                      data[0].cdr_5_5==3 %} checked {% endif %}>
                     <label class="form-check-label">Berfungsi dalam aktivitas biasa tetapi tidak pada tingkat yang
                       biasa?</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-5-5" value="4" disabled {% if data[0].cdr_5_5 == 4 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-5-5" value="4" disabled {% if
+                      data[0].cdr_5_5==4 %} checked {% endif %}>
                     <label class="form-check-label">Fungsi normal dalam aktivitas biasa?</label>
                   </div>
                 </div>
@@ -869,77 +1135,93 @@
                 <div class="form-group">
                   <h5>1. Berpakaian</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-1" value="0" disabled {% if data[0].cdr_6_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-1" value="0" disabled {% if
+                      data[0].cdr_6_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Tanpa Bantuan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-1" value="1" disabled {% if data[0].cdr_6_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-1" value="1" disabled {% if
+                      data[0].cdr_6_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang kesulitan pada kancing</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-1" value="2" disabled {% if data[0].cdr_6_1 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-1" value="2" disabled {% if
+                      data[0].cdr_6_1==2 %} checked {% endif %}>
                     <label class="form-check-label">Salah urutan dalam memasang (lupa memakai pakaian dalam,
                       etc)</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-1" value="3" disabled {% if data[0].cdr_6_1 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-1" value="3" disabled {% if
+                      data[0].cdr_6_1==3 %} checked {% endif %}>
                     <label class="form-check-label">Tidak bisa berpakaian</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>2. Mencuci, dandan</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-2" value="0" disabled {% if data[0].cdr_6_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-2" value="0" disabled {% if
+                      data[0].cdr_6_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Tanpa Bantuan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-2" value="1" disabled {% if data[0].cdr_6_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-2" value="1" disabled {% if
+                      data[0].cdr_6_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Kebutuhan dorongan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-2" value="2" disabled {% if data[0].cdr_6_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-2" value="2" disabled {% if
+                      data[0].cdr_6_2==2 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang membutuhkan pertolongan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-2" value="3" disabled {% if data[0].cdr_6_2 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-2" value="3" disabled {% if
+                      data[0].cdr_6_2==3 %} checked {% endif %}>
                     <label class="form-check-label">Selalu atau hampir selalu membutuhkan bantuan</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>3. Kebiasaan makan</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-3" value="0" disabled {% if data[0].cdr_6_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-3" value="0" disabled {% if
+                      data[0].cdr_6_3==0 %} checked {% endif %}>
                     <label class="form-check-label">Rapi, menggunakan peralatan yang tepat</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-3" value="1" disabled {% if data[0].cdr_6_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-3" value="1" disabled {% if
+                      data[0].cdr_6_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Sendok yang berantakan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-3" value="2" disabled {% if data[0].cdr_6_3 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-3" value="2" disabled {% if
+                      data[0].cdr_6_3==2 %} checked {% endif %}>
                     <label class="form-check-label">Sederhana padatan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-3" value="3" disabled {% if data[0].cdr_6_3 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-3" value="3" disabled {% if
+                      data[0].cdr_6_3==3 %} checked {% endif %}>
                     <label class="form-check-label">Harus dibantu</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Kontrol kandung kemih dan usus</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-4" value="0" disabled {% if data[0].cdr_6_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-4" value="0" disabled {% if
+                      data[0].cdr_6_4==0 %} checked {% endif %}>
                     <label class="form-check-label">Normal</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-4" value="1" disabled {% if data[0].cdr_6_4 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-4" value="1" disabled {% if
+                      data[0].cdr_6_4==1 %} checked {% endif %}>
                     <label class="form-check-label">Kadang-kadang tempat tidur basah</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-4" value="2" disabled {% if data[0].cdr_6_4 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-4" value="2" disabled {% if
+                      data[0].cdr_6_4==2 %} checked {% endif %}>
                     <label class="form-check-label">Sering tempat tidur basah</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-6-4" value="3" disabled {% if data[0].cdr_6_4 == 3 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-6-4" value="3" disabled {% if
+                      data[0].cdr_6_4==3 %} checked {% endif %}>
                     <label class="form-check-label">Dua kali lipat tak terkendali</label>
                   </div>
                 </div>
@@ -948,11 +1230,13 @@
                 <div class="form-group">
                   <h5>1. Apakah Anda memiliki masalah dengan memori atau berpikir?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-7-1" value="0" disabled {% if data[0].cdr_7_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-7-1" value="0" disabled {% if
+                      data[0].cdr_7_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Ya</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-7-1" value="1" disabled {% if data[0].cdr_7_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-7-1" value="1" disabled {% if
+                      data[0].cdr_7_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Tidak</label>
                   </div>
                 </div>
@@ -978,6 +1262,16 @@
                     ini setelah saya: (Ulangi sampai frasa ini diulang dengan benar atau maksimal tiga kali percobaan).
                   </h5>
                   <h5><b>Joseph, Raj, 42, Jalan Pasar, Chennai</b></h5>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-7-3" value="0" disabled {% if
+                      data[0].cdr_7_3==0 %} checked {% endif %}>
+                    <label class="form-check-label">Bisa Diulang</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-7-3" value="1" disabled {% if
+                      data[0].cdr_7_3==1 %} checked {% endif %}>
+                    <label class="form-check-label">Tidak Bisa Diulang</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Kapan kamu lahir?</h5>
@@ -990,12 +1284,6 @@
                 <div class="form-group">
                   <h5>6. Apa sekolah terakhir yang Anda hadiri?</h5>
                   <input type="text" class="form-control" id="" name="cdr-7-6a" value="{{ data[0].cdr_7_6a }}" disabled>
-                  <h5>Nama</h5>
-                  <input type="text" class="form-control" id="" name="cdr-7-6b" value="{{ data[0].cdr_7_6b }}" disabled>
-                  <h5>Tempat</h5>
-                  <input type="text" class="form-control" id="" name="cdr-7-6c" value="{{ data[0].cdr_7_6c }}" disabled>
-                  <h5>Kelas</h5>
-                  <input type="text" class="form-control" id="" name="cdr-7-6d" value="{{ data[0].cdr_7_6d }}" disabled>
                 </div>
                 <div class="form-group">
                   <h5>7. Apa pekerjaan/pekerjaan utama Anda (atau pasangan jika tidak bekerja)?</h5>
@@ -1012,94 +1300,120 @@
                 <div class="form-group">
                   <h5>10. Ulangi nama dan alamat yang saya minta untuk Anda ingat:</h5>
                   <h5><b>Joseph, Raj, 42, Jalan Pasar, Chennai</b></h5>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-7-10" value="0" disabled {% if
+                      data[0].cdr_7_10==0 %} checked {% endif %}>
+                    <label class="form-check-label">Bisa Diulang</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr-7-10" value="1" disabled {% if
+                      data[0].cdr_7_10==1 %} checked {% endif %}>
+                    <label class="form-check-label">Tidak Bisa Diulang</label>
+                  </div>
                 </div>
                 <!-- Part 8 -->
                 <h4>Pertanyaan untuk Pasien tentang Orientasi:</h4>
                 <div class="form-group">
                   <h5>1. Tanggal?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-1" value="0" disabled {% if data[0].cdr_8_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-1" value="0" disabled {% if
+                      data[0].cdr_8_1==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-1" value="1" disabled {% if data[0].cdr_8_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-1" value="1" disabled {% if
+                      data[0].cdr_8_1==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>2. Hari?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-2" value="0" disabled {% if data[0].cdr_8_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-2" value="0" disabled {% if
+                      data[0].cdr_8_2==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-2" value="1" disabled {% if data[0].cdr_8_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-2" value="1" disabled {% if
+                      data[0].cdr_8_2==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>3. Bulan?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-3" value="0" disabled {% if data[0].cdr_8_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-3" value="0" disabled {% if
+                      data[0].cdr_8_3==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-3" value="1" disabled {% if data[0].cdr_8_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-3" value="1" disabled {% if
+                      data[0].cdr_8_3==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Tahun?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-4" value="0" disabled {% if data[0].cdr_8_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-4" value="0" disabled {% if
+                      data[0].cdr_8_4==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-4" value="1" disabled {% if data[0].cdr_8_4 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-4" value="1" disabled {% if
+                      data[0].cdr_8_4==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>5. Apa nama tempat ini?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-5" value="0" disabled {% if data[0].cdr_8_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-5" value="0" disabled {% if
+                      data[0].cdr_8_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-5" value="1" disabled {% if data[0].cdr_8_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-5" value="1" disabled {% if
+                      data[0].cdr_8_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>6. Apa nama kota tempat kita berada?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-6" value="0" disabled {% if data[0].cdr_8_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-6" value="0" disabled {% if
+                      data[0].cdr_8_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-6" value="1" disabled {% if data[0].cdr_8_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-6" value="1" disabled {% if
+                      data[0].cdr_8_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>7. Jam berapa saat ini?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-7" value="0" disabled {% if data[0].cdr_8_7 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-7" value="0" disabled {% if
+                      data[0].cdr_8_7==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-7" value="1" disabled {% if data[0].cdr_8_7 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-7" value="1" disabled {% if
+                      data[0].cdr_8_7==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>8. Apakah pasien tahu siapa informannya (menurut penilaian anda)?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-8" value="0" disabled {% if data[0].cdr_8_8 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-8" value="0" disabled {% if
+                      data[0].cdr_8_8==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-8-8" value="1" disabled {% if data[0].cdr_8_8 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-8-8" value="1" disabled {% if
+                      data[0].cdr_8_8==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
@@ -1109,31 +1423,37 @@
                 <div class="form-group">
                   <h5>1. lobak...kembang kol</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-1" value="0" disabled {% if data[0].cdr_9_1 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-1" value="0" disabled {% if
+                      data[0].cdr_9_1==0 %} checked {% endif %}>
                     <label class="form-check-label">0 = sayuran</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-1" value="1" disabled {% if data[0].cdr_9_1 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-1" value="1" disabled {% if
+                      data[0].cdr_9_1==1 %} checked {% endif %}>
                     <label class="form-check-label">1 = makanan yang dapat dimakan, makhluk hidup, dapat dimasak,
                       dll.</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-1" value="2" disabled {% if data[0].cdr_9_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-1" value="2" disabled {% if
+                      data[0].cdr_9_2==2 %} checked {% endif %}>
                     <label class="form-check-label">2 = jawaban tidak relevan</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>2. meja...rak buku</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-2" value="0" disabled {% if data[0].cdr_9_2 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-2" value="0" disabled {% if
+                      data[0].cdr_9_2==0 %} checked {% endif %}>
                     <label class="form-check-label">0 = perabotan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-2" value="1" disabled {% if data[0].cdr_9_2 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-2" value="1" disabled {% if
+                      data[0].cdr_9_2==1 %} checked {% endif %}>
                     <label class="form-check-label">1 = kayu, kaki</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-2" value="2" disabled {% if data[0].cdr_9_2 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-2" value="2" disabled {% if
+                      data[0].cdr_9_2==2 %} checked {% endif %}>
                     <label class="form-check-label">2 = jawaban tidak relevan</label>
                   </div>
                 </div>
@@ -1141,76 +1461,90 @@
                 <div class="form-group">
                   <h5>3. bohong...kesalahan</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-3" value="0" disabled {% if data[0].cdr_9_3 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-3" value="0" disabled {% if
+                      data[0].cdr_9_3==0 %} checked {% endif %}>
                     <label class="form-check-label">0 = satu disengaja, satu tidak disengaja</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-3" value="1" disabled {% if data[0].cdr_9_3 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-3" value="1" disabled {% if
+                      data[0].cdr_9_3==1 %} checked {% endif %}>
                     <label class="form-check-label">1 = satu buruk yang lain baik – atau hanya menjelaskan satu</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-3" value="2" disabled {% if data[0].cdr_9_3 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-3" value="2" disabled {% if
+                      data[0].cdr_9_3==2 %} checked {% endif %}>
                     <label class="form-check-label">2 = hal lain</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>4. sungai...kanal</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-4" value="0" disabled {% if data[0].cdr_9_4 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-4" value="0" disabled {% if
+                      data[0].cdr_9_4==0 %} checked {% endif %}>
                     <label class="form-check-label">0 = alami - buatan</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-4" value="1" disabled {% if data[0].cdr_9_4 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-4" value="1" disabled {% if
+                      data[0].cdr_9_4==1 %} checked {% endif %}>
                     <label class="form-check-label">2 = lainnya</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>5. Berapa 5 paise dalam rupee?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-5" value="0" disabled {% if data[0].cdr_9_5 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-5" value="0" disabled {% if
+                      data[0].cdr_9_5==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-5" value="1" disabled {% if data[0].cdr_9_5 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-5" value="1" disabled {% if
+                      data[0].cdr_9_5==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>6. Berapa 25 paise dalam Rs.6.75?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-6" value="0" disabled {% if data[0].cdr_9_6 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-6" value="0" disabled {% if
+                      data[0].cdr_9_6==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-6" value="1" disabled {% if data[0].cdr_9_6 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-6" value="1" disabled {% if
+                      data[0].cdr_9_6==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>7. Kurangi 3 dari 20 dan terus kurangi 3 dari setiap nomor baru sepanjang jalan bawah</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-7" value="0" disabled {% if data[0].cdr_9_7 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-7" value="0" disabled {% if
+                      data[0].cdr_9_7==0 %} checked {% endif %}>
                     <label class="form-check-label">Benar</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-7" value="1" disabled {% if data[0].cdr_9_7 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-7" value="1" disabled {% if
+                      data[0].cdr_9_7==1 %} checked {% endif %}>
                     <label class="form-check-label">Salah</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <h5>8. Setelah tiba di kota asing, bagaimana Anda menemukan teman yang ingin Anda temui?</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-8" value="0" disabled {% if data[0].cdr_9_8 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-8" value="0" disabled {% if
+                      data[0].cdr_9_8==0 %} checked {% endif %}>
                     <label class="form-check-label">0 = coba buku telepon, pergi ke kotamadya untuk direktori; hubungi
                       teman bersama</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-8" value="1" disabled {% if data[0].cdr_9_8 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-8" value="1" disabled {% if
+                      data[0].cdr_9_8==1 %} checked {% endif %}>
                     <label class="form-check-label">1 = hubungi polisi, hubungi operator (biasanya tidak akan memberikan
                       alamat</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-8" value="2" disabled {% if data[0].cdr_9_8 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-8" value="2" disabled {% if
+                      data[0].cdr_9_8==2 %} checked {% endif %}>
                     <label class="form-check-label">2 = tidak ada jawaban yang jelas</label>
                   </div>
                 </div>
@@ -1218,15 +1552,18 @@
                   <h5>9. Penilaian pasien terhadap disabilitas dan posisi sosial serta pemahaman mengapa dia hadir pada
                     pemeriksaan (meskipun sudah dinilai, berikan pendapat pribadi Anda):</h5>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-9" value="0" disabled {% if data[0].cdr_9_9 == 0 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-9" value="0" disabled {% if
+                      data[0].cdr_9_9==0 %} checked {% endif %}>
                     <label class="form-check-label">Wawasan yang bagus</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-9" value="1" disabled {% if data[0].cdr_9_9 == 1 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-9" value="1" disabled {% if
+                      data[0].cdr_9_9==1 %} checked {% endif %}>
                     <label class="form-check-label">Wawasan yang cukup</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="cdr-9-9" value="2" disabled {% if data[0].cdr_9_9 == 2 %} checked {% endif %}>
+                    <input class="form-check-input" type="radio" name="cdr-9-9" value="2" disabled {% if
+                      data[0].cdr_9_9==2 %} checked {% endif %}>
                     <label class="form-check-label">Wawasan yang kurang</label>
                   </div>
                 </div>
@@ -1310,27 +1647,166 @@
                 </table>
                 <div class="form-group">
                   <h5>1. Memori</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res1" value="{{ data[0].cdr_res1 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res1" value="0" disabled {% if
+                      data[0].cdr_res1==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res1" value="0.5" disabled {% if
+                      data[0].cdr_res1==0.5 %} checked {% endif %}>
+                    <label class="form-check-label">0.5</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res1" value="1.0" disabled {% if
+                      data[0].cdr_res1==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res1" value="2.0" disabled {% if
+                      data[0].cdr_res1==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res1" value="3.0" disabled {% if
+                      data[0].cdr_res1==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>2. Orientasi</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res2" value="{{ data[0].cdr_res2 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res2" value="0" disabled {% if
+                      data[0].cdr_res2==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res2" value="0.5" disabled {% if
+                      data[0].cdr_res2==0.5 %} checked {% endif %}>
+                    <label class="form-check-label">0.5</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res2" value="1.0" disabled {% if
+                      data[0].cdr_res2==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res2" value="2.0" disabled {% if
+                      data[0].cdr_res2==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res2" value="3.0" disabled {% if
+                      data[0].cdr_res2==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>3. Kemampuan Penghakiman & Pemecahan Masalah</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res3" value="{{ data[0].cdr_res3 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res3" value="0" disabled {% if
+                      data[0].cdr_res3==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res3" value="0.5" disabled {% if
+                      data[0].cdr_res3==0.5 %} checked {% endif %}>
+                    <label class="form-check-label">0.5</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res3" value="1.0" disabled {% if
+                      data[0].cdr_res3==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res3" value="2.0" disabled {% if
+                      data[0].cdr_res3==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res3" value="3.0" disabled {% if
+                      data[0].cdr_res3==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>4. Kegiatan Luar</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res4" value="{{ data[0].cdr_res4 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res4" value="0" disabled {% if
+                      data[0].cdr_res4==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res4" value="0.5" disabled {% if
+                      data[0].cdr_res4==0.5 %} checked {% endif %}>
+                    <label class="form-check-label">0.5</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res4" value="1.0" disabled {% if
+                      data[0].cdr_res4==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res4" value="2.0" disabled {% if
+                      data[0].cdr_res4==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res4" value="3.0" disabled {% if
+                      data[0].cdr_res4==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>5. Pekerjaan Rumah dan Hobby</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res5" value="{{ data[0].cdr_res5 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res5" value="0" disabled {% if
+                      data[0].cdr_res5==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res5" value="0.5" disabled {% if
+                      data[0].cdr_res5==0.5 %} checked {% endif %}>
+                    <label class="form-check-label">0.5</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res5" value="1.0" disabled {% if
+                      data[0].cdr_res5==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res5" value="2.0" disabled {% if
+                      data[0].cdr_res5==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res5" value="3.0" disabled {% if
+                      data[0].cdr_res5==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <h5>6. Perawatan Pribadi</h5>
-                  <input type="number" class="form-control" id="" name="cdr_res6" value="{{ data[0].cdr_res6 }}" min="0" max="3" step=".5" disabled>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res6" value="0" disabled {% if
+                      data[0].cdr_res6==0 %} checked {% endif %}>
+                    <label class="form-check-label">0</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res6" value="1.0" disabled {% if
+                      data[0].cdr_res6==1 %} checked {% endif %}>
+                    <label class="form-check-label">1</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res6" value="2.0" disabled {% if
+                      data[0].cdr_res6==2 %} checked {% endif %}>
+                    <label class="form-check-label">2</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cdr_res6" value="3.0" disabled {% if
+                      data[0].cdr_res6==3 %} checked {% endif %}>
+                    <label class="form-check-label">3</label>
+                  </div>
                 </div>
             </form>
           </div>
