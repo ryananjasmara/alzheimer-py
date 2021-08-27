@@ -45,12 +45,14 @@
     {% if session['login_as'] == 'dokter': %}
     <div class="row">
       <div class="col-xs-12">
-        <div class="box">
-          <H1>Hallo Selamat Datang di Website Alzheimer!
+        <div class="box" style="padding: 20px; text-align: center;">
+          <h3>SELAMAT DATANG DI WEBSITE ALZHEIMER!</h3>
             <br>
+            <img src="{{ url_for('static', filename='a.jpeg') }}" style="height: 200px;">
+            <img src="{{ url_for('static', filename='b.jpeg') }}" style="height: 200px;">
             <br>
-            Website ini dapat membantu dokter umum dalam mendeteksi dini penyakit
-            alzheimer pada orang tua</H1>
+            <h4>Website ini diharapkan dapat membantu dokter umum dalam mendeteksi dini penyakit
+            Alzheimer pada orang tua</h4>
         </div>
       </div>
     </div>
